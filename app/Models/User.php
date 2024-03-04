@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,7 +48,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Event::class);
     }
 
+    // method to get the buyers
 
+    public static function buyers()
+    {
+        return self::whereHas('roles', function (Builder $query) {
+            $query->where('name', 'user');
+        })->get();
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

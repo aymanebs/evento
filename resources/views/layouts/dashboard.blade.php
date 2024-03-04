@@ -41,7 +41,7 @@
                                 <!-- NAV LINKS -->
                                 <div class="py-4 text-gray-400 space-y-1">
                                     <!-- BASIC LINK -->
-                                    <a href="#" class="block py-2.5 px-4 flex items-center space-x-2 bg-gray-800 text-white hover:bg-gray-800 hover:text-white rounded">
+                                    <a href="{{route('admin.dashboard')}}" class="block py-2.5 px-4 flex items-center space-x-2 bg-gray-800 text-white hover:bg-gray-800 hover:text-white rounded">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                         <span>Dashboard</span>
                                     </a>
@@ -56,7 +56,7 @@
                                             <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>    
                                         </div>
                                         <div x-show="open" class="text-sm border-l-2 border-gray-800 mx-6 my-2.5 px-2.5 flex flex-col gap-y-1">
-                                            <a href="route('')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                            <a href="{{route('admin.users')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                                 Users
                                             </a>
                                             <a href="route('')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
@@ -65,7 +65,7 @@
                                             <a href="route('')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                                 Organisers
                                             </a>
-                                            <a href="route('')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                            <a href="{{route('admin.categories')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                                 Categories
                                             </a>
                                         </div>
@@ -78,7 +78,9 @@
                                 <div class="flex items-center space-x-2">
                                     <!-- AVATAR IMAGE BY FIRST LETTER OF NAME -->
                                     <img src="https://ui-avatars.com/api/?name=Habib+Mhamadi&size=128&background=ff4433&color=fff" class="w-7 w-7 rounded-full" alt="Profile">
+                                    @if(auth()->check())
                                     <h1>{{auth()->user()->name}}</h1>
+                                    @endif
                                 </div>
                              
                                     <form id="logoutForm" action="{{ route('logout') }}" method="POST">

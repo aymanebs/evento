@@ -62,7 +62,100 @@
         </div>
         <!-- END OF STATISTICS -->
 
-  
+        
+
+        {{-- table component --}}
+        
+        <x-table :headers="['Name'=>'text-left','Email'=>'text-left','Event'=>'text-center','Status'=>'text-center','Action'=>'text-center']" >
+           
+           
+            @foreach ($buyers as $buyer)
+                    
+
+            <tr class="border-b border-gray-200 hover:bg-gray-100">
+
+        <td class="py-3 px-6 text-left">
+            <div class="flex items-center">
+                <div class="mr-2">
+                    {{-- <img class="w-6 h-6 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg"/> --}}
+                </div>
+                <span>{{$buyer->name}}</span>
+            </div>
+        </td>
+
+        <td class="py-3 px-6 text-left whitespace-nowrap">
+            {{$buyer->email}}
+        </td>
+
+        <td class="py-3 px-6 text-left whitespace-nowrap">
+          
+        </td>
+
+
+        {{-- <td class="py-3 px-6 text-left whitespace-nowrap">
+            {{$buyer->company->adress ?? '-'}}
+        </td> --}}
+
+     
+
+        <td class="py-3 px-6 text-center">
+            @switch($buyer->status)
+            @case(1) 
+            <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{$buyer->getStatus()}}</span>
+            @break
+            @case(2)
+            <span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">{{$buyer->getStatus()}}</span>
+             @break
+            @endswitch
+        </td>
+
+        {{-- Action icons start --}}
+
+        <td class="py-3 px-6 text-center">
+            <div class="flex item-center justify-center">
+                
+
+                {{-- banning buyer --}}
+
+                {{-- <form action="{{ route('admin.users.ban', ['buyer' => $buyer->id]) }}" method="POST"> --}}
+                    @csrf
+                    <button type="submit" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 cursor-pointer cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                            <path d="M5.7 5.7l12.6 12.6" />
+                          </svg>
+                    </button>
+                </form>
+                
+
+                {{-- unbanning user --}}
+
+                {{-- <form action="{{ route('admin.users.unban', ['buyer' => $buyer->id]) }}" method="POST"> --}}
+                    @csrf
+                    <button type="submit" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 cursor-pointer cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-restore"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3.06 13a9 9 0 1 0 .49 -4.087" />
+                            <path d="M3 4.001v5h5" />
+                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                          </svg>
+                    </button>
+                </form>
+
+
+            </div>
+        </td>
+
+        {{-- Action icons end --}}
+
+     
+
+    </tr>
+
+    @endforeach
+   
+    </x-table>   
     </section>
     <!-- END OF PAGE CONTENT -->
 </main>

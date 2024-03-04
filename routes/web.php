@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\dashboardController as dashboardController;
+use App\Http\Controllers\Admin\UserController as UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +31,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Admin routes
+// Admin routes ////////////////////
+
+Route::prefix('admin')->name('admin.')->group(function(){
+
 Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
+    // User
+Route::get('/users',[UserController::class,'index'])->name('users');
+Route::post('/users/ban/{buyer}',[UserController::class,'ban'])->name('users.ban');
+Route::post('/users/ban/{buyer}',[UserController::class,'unban'])->name('users.unban');
+
+    // category
+Route::get('/categories',[CategoryController::class,'index'])->name('categories');
+Route::post('/categories/store',[CategoryController::class,'store'])->name('categories.store');
+Route::patch('/categories/update/{category}',[CategoryController::class,'update'])->name('categories.update');
+Route::delete('/categories/delete/{category}',[CategoryController::class,'destroy'])->name('categories.delete');
+});
+
+
 
 require __DIR__.'/auth.php';

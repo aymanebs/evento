@@ -78,7 +78,7 @@
                                 <div class="flex items-center space-x-2">
                                     <!-- AVATAR IMAGE BY FIRST LETTER OF NAME -->
                                     <img src="https://ui-avatars.com/api/?name=Habib+Mhamadi&size=128&background=ff4433&color=fff" class="w-7 w-7 rounded-full" alt="Profile">
-                                    <h1>auth()->user()->name}}</h1>
+                                    <h1>{{auth()->user()->name}}</h1>
                                 </div>
                              
                                     <form id="logoutForm" action="{{ route('logout') }}" method="POST">

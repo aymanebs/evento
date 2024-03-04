@@ -69,7 +69,7 @@
         <x-table :headers="['Name'=>'text-left','Email'=>'text-left','Event'=>'text-center','Status'=>'text-center','Action'=>'text-center']" >
            
            
-            {{-- @foreach ($users as $user) --}}
+            @foreach ($users as $user)
                     
 
             <tr class="border-b border-gray-200 hover:bg-gray-100">
@@ -79,30 +79,30 @@
                 <div class="mr-2">
                     {{-- <img class="w-6 h-6 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg"/> --}}
                 </div>
-                {{-- <span>{{$user->name}}</span> --}}
+                <span>{{$user->name}}</span>
             </div>
         </td>
 
         <td class="py-3 px-6 text-left whitespace-nowrap">
-            {{-- {{$user->email}} --}}
+            {{$user->email}}
         </td>
 
 
-        <td class="py-3 px-6 text-left whitespace-nowrap">
-            {{-- {{$user->company->adress ?? '-'}} --}}
-        </td>
+        {{-- <td class="py-3 px-6 text-left whitespace-nowrap">
+            {{$user->company->adress ?? '-'}}
+        </td> --}}
 
      
 
         <td class="py-3 px-6 text-center">
-            {{-- @switch($user->status)
-            @case(1) --}}
-            {{-- <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{$user->getStatus()}}</span> --}}
-            {{-- @break
-            @case(2) --}}
-            {{-- <span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">{{$user->getStatus()}}</span> --}}
-            {{-- @break
-            @endswitch --}}
+            @switch($user->status)
+            @case(1) 
+            <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{$user->getStatus()}}</span>
+            @break
+            @case(2)
+            <span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">{{$user->getStatus()}}</span>
+             @break
+            @endswitch
         </td>
 
         {{-- Action icons start --}}
@@ -149,7 +149,7 @@
 
     </tr>
 
-    {{-- @endforeach --}}
+    @endforeach
    
     </x-table>   
     </section>

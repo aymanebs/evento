@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->string('location');
             $table->date('date');
             $table->integer('available_places');
             $table->integer('status')->default(1);

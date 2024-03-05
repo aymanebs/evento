@@ -20,7 +20,8 @@ class Event extends Model implements HasMedia
         'time',
         'available_places',
         'status',
-        'category_id'
+        'category_id',
+        'user_id'
     ];
 
     // Event status
@@ -44,5 +45,9 @@ class Event extends Model implements HasMedia
 
     public function categories(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function organiser(){
+        return $this->belongsTo(Organiser::class);
     }
 }

@@ -22,7 +22,7 @@
 <div class="grid  gap-8 grid-cols-1">
 	<div class="flex flex-col ">
 			<div class="flex flex-col sm:flex-row items-center">
-				<h2 class="font-semibold text-lg mr-auto">Add an event</h2>
+				<h2 class="font-semibold text-lg mr-auto">Add an event  </h2>
 				<div class="w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0"></div>
 			</div>
 
@@ -116,6 +116,10 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                {{-- hidden input --}}
+
+                                <input type="hidden" name="user_id" value="{{auth()->id()}}">
 
 
 								<p class="text-xs text-red-500 text-right my-3">Required fields are marked with an

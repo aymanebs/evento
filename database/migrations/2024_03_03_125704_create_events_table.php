@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('date');
             $table->integer('available_places');
             $table->integer('status')->default(1);
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

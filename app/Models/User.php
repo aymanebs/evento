@@ -48,13 +48,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Event::class);
     }
 
-    // method to get the buyers
-
-    public static function buyers()
-    {
-        return self::whereHas('roles', function (Builder $query) {
-            $query->where('name', 'user');
-        })->get();
+    public function organiser(){
+        return $this->hasOne(Organiser::class);
     }
     /**
      * The attributes that should be hidden for serialization.

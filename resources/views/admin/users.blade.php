@@ -66,10 +66,10 @@
 
         {{-- table component --}}
         
-        <x-table :headers="['Name'=>'text-left','Email'=>'text-left','Event'=>'text-center','Status'=>'text-center','Action'=>'text-center']" >
+        <x-table :headers="['Name'=>'text-left','Email'=>'text-left','Role'=>'text-left','Status'=>'text-center','Action'=>'text-center']" >
            
            
-            @foreach ($buyers as $buyer)
+            @foreach ($users as $user)
                     
 
             <tr class="border-b border-gray-200 hover:bg-gray-100">
@@ -79,32 +79,45 @@
                 <div class="mr-2">
                     {{-- <img class="w-6 h-6 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg"/> --}}
                 </div>
-                <span>{{$buyer->name}}</span>
+                <span>{{$user->name}}</span>
             </div>
         </td>
 
         <td class="py-3 px-6 text-left whitespace-nowrap">
-            {{$buyer->email}}
+            {{$user->email}}
         </td>
-
+        @foreach($user->roles as $role)
         <td class="py-3 px-6 text-left whitespace-nowrap">
-          
+            
+        
+        @switch($role->id) 
+        @case(1)
+        <span class="bg-blue-200 text-blue-600 py-1 px-3 rounded-full text-xs">{{$role->name}}</span>
+        @break
+        @case(2)
+        <span class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">{{$role->name}}</span>
+        @break
+        @case(3)
+        <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{{$role->name}}</span>
+        @break
+        @endswitch
+       
         </td>
-
+        @endforeach
 
         {{-- <td class="py-3 px-6 text-left whitespace-nowrap">
-            {{$buyer->company->adress ?? '-'}}
+            {{$user->company->adress ?? '-'}}
         </td> --}}
 
      
 
         <td class="py-3 px-6 text-center">
-            @switch($buyer->status)
+            @switch($user->status)
             @case(1) 
-            <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{$buyer->getStatus()}}</span>
+            <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{{$user->getStatus()}}</span>
             @break
             @case(2)
-            <span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">{{$buyer->getStatus()}}</span>
+            <span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">{{$user->getStatus()}}</span>
              @break
             @endswitch
         </td>
@@ -115,9 +128,9 @@
             <div class="flex item-center justify-center">
                 
 
-                {{-- banning buyer --}}
+                {{-- banning user --}}
 
-                {{-- <form action="{{ route('admin.users.ban', ['buyer' => $buyer->id]) }}" method="POST"> --}}
+                <form action="{{ route('admin.users.ban', ['user' => $user->id]) }}" method="POST">
                     @csrf
                     <button type="submit" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 cursor-pointer cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -131,7 +144,7 @@
 
                 {{-- unbanning user --}}
 
-                {{-- <form action="{{ route('admin.users.unban', ['buyer' => $buyer->id]) }}" method="POST"> --}}
+                <form action="{{ route('admin.users.unban', ['user' => $user->id]) }}" method="POST">
                     @csrf
                     <button type="submit" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 cursor-pointer cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-restore"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

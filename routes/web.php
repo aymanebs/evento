@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController as CategoryController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\dashboardController as dashboardController;
-use App\Http\Controllers\Admin\UserController as UserController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Organiser\EventController as OrganiserEventController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,17 +39,25 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
     // User
-Route::get('/users',[UserController::class,'index'])->name('users');
-Route::post('/users/ban/{buyer}',[UserController::class,'ban'])->name('users.ban');
-Route::post('/users/ban/{buyer}',[UserController::class,'unban'])->name('users.unban');
+Route::get('/users',[AdminUserController::class,'index'])->name('users');
+Route::post('/users/ban/{user}',[AdminUserController::class,'ban'])->name('users.ban');
+Route::post('/users/unban/{user}',[AdminUserController::class,'unban'])->name('users.unban');
 
     // category
-Route::get('/categories',[CategoryController::class,'index'])->name('categories');
-Route::post('/categories/store',[CategoryController::class,'store'])->name('categories.store');
-Route::patch('/categories/update/{category}',[CategoryController::class,'update'])->name('categories.update');
-Route::delete('/categories/delete/{category}',[CategoryController::class,'destroy'])->name('categories.delete');
+Route::get('/categories',[AdminCategoryController::class,'index'])->name('categories');
+Route::post('/categories/store',[AdminCategoryController::class,'store'])->name('categories.store');
+Route::patch('/categories/update/{category}',[AdminCategoryController::class,'update'])->name('categories.update');
+Route::delete('/categories/delete/{category}',[AdminCategoryController::class,'destroy'])->name('categories.delete');
 });
 
+// Organiser routes ////////////////////
+
+Route::prefix('organiser')->name('organiser')->group(function(){
+
+Route::get('/events/create',[OrganiserEventController::class,'create'])->name('events.create');
+
+
+});
 
 
 require __DIR__.'/auth.php';

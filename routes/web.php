@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\dashboardController as dashboardController;
+use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Organiser\EventController as OrganiserEventController;
 use App\Http\Controllers\ProfileController;
@@ -23,9 +24,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -48,13 +49,19 @@ Route::get('/categories',[AdminCategoryController::class,'index'])->name('catego
 Route::post('/categories/store',[AdminCategoryController::class,'store'])->name('categories.store');
 Route::patch('/categories/update/{category}',[AdminCategoryController::class,'update'])->name('categories.update');
 Route::delete('/categories/delete/{category}',[AdminCategoryController::class,'destroy'])->name('categories.delete');
+
+    // event
+Route::get('/events',[AdminEventController::class,'index'])->name('events'); 
+Route::post('/events/accept/{event}',[AdminEventController::class,'accept'])->name('events.accept'); 
+
 });
 
 // Organiser routes ////////////////////
 
-Route::prefix('organiser')->name('organiser')->group(function(){
+Route::prefix('organiser')->group(function(){
 
-Route::get('/events/create',[OrganiserEventController::class,'create'])->name('events.create');
+Route::get('/events/create',[OrganiserEventController::class,'create'])->name('organiser.events.create');
+Route::post('/events/store',[OrganiserEventController::class,'store'])->name('organiser.events.store');
 
 
 });

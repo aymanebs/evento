@@ -17,8 +17,10 @@ class Event extends Model implements HasMedia
         'description',
         'location',
         'date',
+        'time',
         'available_places',
-        'status'
+        'status',
+        'category_id'
     ];
 
     // Event status

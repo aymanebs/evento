@@ -59,7 +59,7 @@
                                             <a href="{{route('admin.users')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                                 Users
                                             </a>
-                                            <a href="route('')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                            <a href="{{route('admin.events')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                                 Events
                                             </a>
                                             <a href="route('')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">

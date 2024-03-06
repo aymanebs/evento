@@ -18,6 +18,6 @@ class EventController extends Controller
     public function store(Request $request){
         $event=Event::create($request->all());
         $event->addMediaFromRequest('image')->toMediaCollection('images');
-        return redirect()->back();
+        return redirect()->route('welcome');
     }
 }

@@ -18,6 +18,7 @@ class Event extends Model implements HasMedia
         'location',
         'date',
         'time',
+        'price',
         'available_places',
         'status',
         'category_id',
@@ -37,6 +38,16 @@ class Event extends Model implements HasMedia
     public function getStatus(){
         return self::$statusOptions[$this->status];
     }
+
+
+    // reservation_method
+
+    public static $reservation_method =[
+        1 => 'auto',
+        2 => 'manual'
+    ];
+
+
 
     // Event model relations
 

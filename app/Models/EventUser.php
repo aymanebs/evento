@@ -16,6 +16,8 @@ class EventUser extends Model
         'event_id'
     ];
 
+   
+
     public static $statusOptions =[
         1 => 'pending',
         2 => 'accepted'

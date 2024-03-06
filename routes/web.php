@@ -21,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class,'index'])->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 
 // Admin routes ////////////////////
 
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::middleware('admin')->prefix('admin')->name('admin.')->group(function(){
 
 Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
     // User
@@ -62,8 +62,13 @@ Route::prefix('organiser')->group(function(){
 Route::get('/events/create',[OrganiserEventController::class,'create'])->name('organiser.events.create');
 Route::post('/events/store',[OrganiserEventController::class,'store'])->name('organiser.events.store');
 
-
 });
 
+
+// Homepage routes /////////////////////
+
+Route::get('/',[HomeController::class,'index'])->name('welcome');
+Route::get('/details/{id}',[HomeController::class,'show'])->name('events.details');
+Route::get('/reservation/{eventId}',[HomeController::class,'reservation'])->name('events.reservation');
 
 require __DIR__.'/auth.php';

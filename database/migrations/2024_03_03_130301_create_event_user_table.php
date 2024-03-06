@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('event_user', function (Blueprint $table) {
             $table->id();
             $table->string('status')->default(1);
-            $table->dateTime('reserved_at');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('event_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

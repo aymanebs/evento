@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- tailwind cdn --}}
+     {{-- tailwind cdn --}}
     <script src="https://cdn.tailwindcss.com"></script>
     {{-- flowbite cdn  --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <title>Homepage</title>
+    <title>Event details</title>
 </head>
 <body>
-    
-</body>
-</html>
-    <body >
 
-        {{-- navbar start --}}
+
+
+            {{-- navbar start --}}
         
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -47,7 +45,7 @@
         </div>
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSmallButton">
           <li>
-            <a href="{{route('admin.dashboard')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
           </li>
           <li>
             <a href="{{route('organiser.events.create')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add event</a>
@@ -80,7 +78,7 @@
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
       <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
-          <a href="{{route('admin.dashboard')}}" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500" aria-current="page">Dashboard</a>
+          <a href="#" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500" aria-current="page">Dashboard</a>
         </li>
         <li>
           <a href="{{route('organiser.events.create')}}" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Add event</a>
@@ -99,203 +97,53 @@
     </div>
   </nav>
             {{-- navbar end   --}}
-
-  {{-- jumbotron  start --}}
   
-  
-
-<section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
-    <div class="px-4 mx-auto max-w-screen-xl text-center py-20 lg:py-30">
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Evonto the biggest event booking platform</h1>
-        <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Evento: Where Every Click Unlocks Your Next Unforgettable Experience! Book Your Tickets to Any Event in Just One Click!</p>
-        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-            <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                Get started
-                <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-            </a>
-            <a href="#" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
-                Learn more
-            </a>  
-        </div>      
-    </div>   
-</section>
-
-
-
-  {{-- jumbotron  end --}}
-
-  
-<form class="max-w-lg mx-auto py-10">
-    <div class="flex">
-        <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
-        <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">All categories <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-  </svg></button>
-        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
-            <li>
-                <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mockups</button>
-            </li>
-            <li>
-                <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Templates</button>
-            </li>
-            <li>
-                <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Design</button>
-            </li>
-            <li>
-                <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logos</button>
-            </li>
-            </ul>
-        </div>
-        <div class="relative w-full">
-            <input type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Mockups, Logos, Design Templates..." required />
-            <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                </svg>
-                <span class="sr-only">Search</span>
-            </button>
-        </div>
-    </div>
-</form>
-
-
-      <div class="max-w-7xl mx-auto my-8 px-2">
     
-    <div class="flex justify-center text-2xl md:text-3xl font-bold mb-4">
-        Read More
-    </div>
+    <section class="text-gray-600 body-font overflow-hidden">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="lg:w-4/5 mx-auto flex flex-wrap">
+            <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+              <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+              <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{$event->title}}</h1>
+              <div class="flex mb-4">
+                <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Details</a>
+                <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1"></a>
+                <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1"></a>
+              </div>
+              <p class="leading-relaxed mb-4">{{$event->description}}</p>
 
-  {{-- cards container start  --}}
-
-    <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
-      
-        <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-
-            {{-- card 1 start --}}
-
-            @foreach( $events as $event)
-            <div class="rounded overflow-hidden shadow-lg">
-                <a href="#"></a>
-                <div class="relative">
-                    <a href="#">
-                        <img class="w-full"
-                            src="{{$event->getFirstMediaUrl('images')}}"
-                            >
-                        <div
-                            class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                        </div>
-                    </a>
-                    <a href="#!">
-                        <div
-                            class="absolute bottom-0 left-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                          {{$event->category->name}}
-                          
-                        </div>
-                    </a>
-    
-                    <a href="!#">
-                        <div
-                            class="text-sm absolute top-0 right-0 bg-indigo-600 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                            <span class="font-bold">27</span>
-                            <small>March</small>
-                        </div>
-                    </a>
-                </div>
-                {{--title --}}
-                <div class="px-6 py-3">
-                
-                    <a href="{{route('events.details',$event->id) }}"
-                        class="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
-                    {{$event->title}}
-                    </a>
-                    <p class="text-gray-500 text-sm">
-                        The city that never sleeps     
-                    </p>
-                </div>
-                     {{--location --}}
-                  <div class="px-6 py-1">
-
-                    <span href="#" class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                          </svg>
-                        <span class="ml-1"> {{$event->location}}</span>
-                    </span>         
-                   </span>
-
-                    </div>
-                    {{--date --}}
-                <div class="px-6 py-1 flex flex-row items-center">
-                    <span href="#" class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                            <path d="M16 3v4" />
-                            <path d="M8 3v4" />
-                            <path d="M4 11h16" />
-                            <path d="M11 15h1" />
-                            <path d="M12 15v3" />
-                          </svg>
-                        <span class="ml-1"> {{$event->date}}</span>
-                    </span>
-                      {{-- time --}}
-
-                      <span href="#" class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                            <path d="M12 7v5l3 3" />
-                          </svg>
-                        <span class="ml-1"> {{$event->time}}</span></span>
-                </div>
-
-                {{-- pay button --}}
-                <div class="px-6 py-2 flex flex-row items-center">
-                <a type="button" href="{{route('events.reservation',['eventId' =>$event->id])}}" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Buy ticket</a>
-                </div>
-
-
+              <div class="flex border-t border-gray-200 py-2">
+                <span class="text-gray-500">Location</span>
+                <span class="ml-auto text-gray-900">{{$event->location}}</span>
+              </div>
+              <div class="flex border-t border-gray-200 py-2">
+                <span class="text-gray-500">Date</span>
+                <span class="ml-auto text-gray-900">{{$event->date}}</span>
+              </div>
+              <div class="flex border-t border-b  border-gray-200 py-2">
+                <span class="text-gray-500">Time</span>
+                <span class="ml-auto text-gray-900">{{$event->time}}</span>
+              </div>
+              <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+                <span class="text-gray-500">Avaible places</span>
+                <span class="ml-auto text-gray-900">{{$event->available_places}}</span>
+              </div>
+           
+              <div class="flex">
+                <span class="title-font font-medium text-2xl text-gray-900">MAD {{$event->price}}</span>
+                <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+                <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
-
-
-            @endforeach
-              {{-- card 1 end  --}}
-  
+            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="{{$event->getFirstMediaUrl('images')}}">
+          </div>
         </div>
-    </div>
+      </section>
 
-  {{-- cards container end --}}
-    
-        
-</div>
-    {{-- Pagination start --}}
-
-    {{-- {{$events->links()}} --}}
-
-    <div class="flex justify-center m-10 space-x-2">
-        @if ($events->onFirstPage())
-            <span class="px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">&laquo;</span>
-        @else
-            <a href="{{ $events->previousPageUrl() }}" class="ring ring-primary bg-primary/20 px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">&laquo;</a>
-        @endif
-
-        <!-- Display specific page links -->
-        @foreach ($events->getUrlRange(1, $events->lastPage()) as $page => $url)
-            <a href="{{ $url }}" class="hover:bg-gray-100 px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">{{ $page }}</a>
-        @endforeach
-
-        @if ($events->hasMorePages())
-            <a href="{{ $events->nextPageUrl() }}" class="px-2 py-1 sm:px-4 sm:py-2 mt-2 text-gray-600 border rounded-lg hover:bg-gray-100 focus:outline-none">&raquo;</a>
-        @else
-            <span class="px-2 py-1 sm:px-4 sm:py-2 mt-2 text-gray-600 rounded-lg focus:outline-none">&raquo;</span>
-        @endif
-    </div>
-    {{-- pagination end --}}
 
 {{-- footer start --}}
 

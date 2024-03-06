@@ -11,7 +11,7 @@
     </div>
     <section class="max-w-7xl mx-auto py-4 px-5">
         <div class="flex justify-between items-center border-b border-gray-300">
-            <h1 class="text-2xl font-semibold pt-2 pb-6">Users</h1>
+            <h1 class="text-2xl font-semibold pt-2 pb-6">Events</h1>
         </div>
       
         <!-- STATISTICS -->
@@ -91,7 +91,7 @@
             {{$event->date}}
         </td>
 
-        <td class="py-3 px-6 text-left whitespace-nowrap">
+        <td class="py-3 px-6 text-center whitespace-nowrap">
             {{$event->available_places}}
         </td>
     

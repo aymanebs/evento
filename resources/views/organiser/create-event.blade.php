@@ -12,8 +12,8 @@
     <!-- component -->
 
 
-<div class="relative min-h-screen flex items-center justify-center bg-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
-	style="background-image: url(https://images.unsplash.com/photo-1532423622396-10a3f979251a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80);">
+    <div class="relative min-h-screen flex items-center justify-center bg-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
+    style="background-image: url('{{asset('imgs/add_event_background.jpg')}}');">
 	<div class="absolute bg-black opacity-60 inset-0 z-0"></div>
 	<div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
         
@@ -91,6 +91,15 @@
                                     </div>
                                 </div>
 
+                                <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+
+                                    <div class="mb-3 space-y-2 w-full text-xs">
+                                        <label class="font-semibold text-gray-600 py-2"> Price</label>
+                                        <input placeholder="Ticket price" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" name="price" id="price">
+                                        <p class="text-red text-xs hidden">Please fill out this field.</p>
+                                    </div>
+                                
+                                </div>
 
 								<div class="flex-auto w-full mb-3 text-xs space-y-2">
 									<label class="font-semibold text-gray-600 py-2">Description</label>
@@ -103,13 +112,13 @@
                                     </label>
                                     <div class="flex items-center space-x-6">
                                         <div class="flex items-center pt-3">
-                                            <input type="radio" name="radio1" id="radioButton1" class="h-4 w-4 " />
+                                            <input type="radio" name="reservation_method" id="radioButton1" class="h-4 w-4" value="1" />
                                             <label for="radioButton1" class="font-semibold text-gray-600 ">
                                                 auto 
                                             </label>
                                         </div>
                                         <div class="flex items-center pt-3">
-                                            <input type="radio" name="radio1" id="radioButton2" class="h-4 w-4 " />
+                                            <input type="radio" name="reservation_method" id="radioButton2" class="h-4 w-4" value="2" />
                                             <label for="radioButton2" class="font-semibold text-gray-600 ">
                                                 manual
                                             </label>
@@ -125,7 +134,7 @@
 								<p class="text-xs text-red-500 text-right my-3">Required fields are marked with an
 									asterisk <abbr title="Required field">*</abbr></p>
 								<div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-									<button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </button>
+									<a href="{{route('welcome')}}" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </a>
 									<button class="mb-2 md:mb-0 bg-sky-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-sky-500" type="submit">Save</button>
 								</div>
 							</div>

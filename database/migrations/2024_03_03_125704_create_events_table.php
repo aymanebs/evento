@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('location');
             $table->date('date');
             $table->time('time');
+            $table->float('price');
             $table->integer('available_places');
             $table->integer('status')->default(1);
             $table->integer('reservation_method')->default(1);

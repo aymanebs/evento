@@ -174,13 +174,12 @@
 
             @foreach( $events as $event)
             <div class="rounded overflow-hidden shadow-lg">
-    
                 <a href="#"></a>
                 <div class="relative">
                     <a href="#">
                         <img class="w-full"
-                            src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-                            alt="Sunset in the mountains">
+                            src="{{$event->getFirstMediaUrl('images')}}"
+                            >
                         <div
                             class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
                         </div>
@@ -188,7 +187,8 @@
                     <a href="#!">
                         <div
                             class="absolute bottom-0 left-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                            Photos
+                          {{$event->category->name}}
+                          
                         </div>
                     </a>
     
@@ -200,7 +200,8 @@
                         </div>
                     </a>
                 </div>
-                <div class="px-6 py-4">
+                {{--title --}}
+                <div class="px-6 py-3">
     
                     <a href="#"
                         class="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
@@ -210,22 +211,53 @@
                         The city that never sleeps
                     </p>
                 </div>
-                <div class="px-6 py-4 flex flex-row items-center">
+                     {{--location --}}
+                  <div class="px-6 py-1">
+
                     <span href="#" class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">
-                        <svg height="13px" width="13px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-                            style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                            <g>
-                                <g>
-                                    <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256
-                c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128
-                c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z"></path>
-                                </g>
-                            </g>
-                        </svg>
-                        <span class="ml-1">6 mins ago</span></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                          </svg>
+                        <span class="ml-1"> {{$event->location}}</span>
+                    </span>
+
+                   
+       
+                    
+                   </span>
+
+                    </div>
+                    {{--date --}}
+                <div class="px-6 py-1 flex flex-row items-center">
+                    <span href="#" class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                            <path d="M16 3v4" />
+                            <path d="M8 3v4" />
+                            <path d="M4 11h16" />
+                            <path d="M11 15h1" />
+                            <path d="M12 15v3" />
+                          </svg>
+                        <span class="ml-1"> {{$event->date}}</span>
+                    </span>
+                      {{-- time --}}
+
+                      <span href="#" class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                            <path d="M12 7v5l3 3" />
+                          </svg>
+                        <span class="ml-1"> {{$event->time}}</span></span>
+
+
                 </div>
             </div>
+
+
             @endforeach
               {{-- card 1 end  --}}
   
@@ -236,34 +268,29 @@
     
         
 </div>
-{{-- Pagination start --}}
-<div class="flex justify-center m-10 space-x-2">
-    <a href="#"
-        class="ring ring-primary bg-primary/20 px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">1
-    </a>
-    <a href="#"
-        class="hover:bg-gray-100 px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">2
-    </a>
-    <a href="#"
-        class="hover:bg-gray-100 px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">3
-    </a>
-    <span
-        class="px-2 py-1 sm:px-4 sm:py-2 mt-2 text-gray-600 rounded-lg focus:outline-none">...</span>
-    <a href="#"
-        class="px-2 py-1 sm:px-4 sm:py-2 mt-2 text-gray-600 border rounded-lg hover:bg-gray-100 focus:outline-none">21
-    </a>
+    {{-- Pagination start --}}
 
-    <a href="#"
-        class="px-2 py-1 sm:px-4 sm:py-2 mt-2 text-gray-600 border rounded-lg hover:bg-gray-100 focus:outline-none">
-        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-            aria-hidden="true">
-            <path fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"></path>
-        </svg>
-    </a>
-</div>
-{{-- pagination end --}}
+    {{-- {{$events->links()}} --}}
+
+    <div class="flex justify-center m-10 space-x-2">
+        @if ($events->onFirstPage())
+            <span class="px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">&laquo;</span>
+        @else
+            <a href="{{ $events->previousPageUrl() }}" class="ring ring-primary bg-primary/20 px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">&laquo;</a>
+        @endif
+
+        <!-- Display specific page links -->
+        @foreach ($events->getUrlRange(1, $events->lastPage()) as $page => $url)
+            <a href="{{ $url }}" class="hover:bg-gray-100 px-2 py-1 sm:px-4 sm:py-2 ml-1 mt-2 text-gray-600 border rounded-lg focus:outline-none">{{ $page }}</a>
+        @endforeach
+
+        @if ($events->hasMorePages())
+            <a href="{{ $events->nextPageUrl() }}" class="px-2 py-1 sm:px-4 sm:py-2 mt-2 text-gray-600 border rounded-lg hover:bg-gray-100 focus:outline-none">&raquo;</a>
+        @else
+            <span class="px-2 py-1 sm:px-4 sm:py-2 mt-2 text-gray-600 rounded-lg focus:outline-none">&raquo;</span>
+        @endif
+    </div>
+    {{-- pagination end --}}
 
 {{-- footer start --}}
 

@@ -21,7 +21,8 @@ class Event extends Model implements HasMedia
         'available_places',
         'status',
         'category_id',
-        'user_id'
+        'user_id',
+        'reservation_method'
     ];
 
     // Event status
@@ -43,7 +44,7 @@ class Event extends Model implements HasMedia
         return $this->belongsToMany(User::class);
     }
 
-    public function categories(){
+    public function category(){
         return $this->belongsTo(Category::class);
     }
 

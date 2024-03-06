@@ -20,6 +20,7 @@ return new class extends Migration
             $table->time('time');
             $table->integer('available_places');
             $table->integer('status')->default(1);
+            $table->integer('reservation_method')->default(1);
             $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

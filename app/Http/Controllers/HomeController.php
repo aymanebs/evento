@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index(){
 
-        $events=Event::all();
+        $events=Event::whereNotIn('status',[1])->paginate(3);
         return view('welcome',compact('events'));
     }
 }

@@ -34,28 +34,29 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            
+     
         ]);
 
-        if($request->role == 2){
+        if ($request->role == 2) {
             $user->roles()->attach(2);
-            
-        }
-        if($request->role == 3){
-            $user->roles()->attach(3);
-        }
 
+        }
+        if ($request->role == 3){
+            $user->roles()->attach(3); 
+        }
         event(new Registered($user));
-
         Auth::login($user);
-
-        // return redirect(RouteServiceProvider::HOME);
         return redirect()->route('welcome');
+
+
+        // // return redirect(RouteServiceProvider::HOME);
+        
     }
 }

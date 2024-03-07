@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My requests</title>
-     {{-- tailwind cdn --}}
+    {{-- tailwind cdn --}}
     <script src="https://cdn.tailwindcss.com"></script>
+    {{-- flowbite cdn  --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <title>Homepage</title>
 </head>
 <body>
+    
+</body>
+</html>
+    <body >
 
-            {{-- navbar start --}}
+        {{-- navbar start --}}
         
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a href="{{route('welcome')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="{{asset('imgs/evento_logo.svg')}}" class="h-8" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Evento</span>
     </a>
@@ -80,7 +86,7 @@
           <a href="{{route('organiser.events.create')}}" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Add event</a>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+          <a href="{{route('requests')}}" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Reservations</a>
         </li>
         <li>
           <form method="POST" action="{{ route('logout') }}">
@@ -112,56 +118,40 @@
                 </tr>
               </thead>
               <tbody>
+                 @foreach($reservations as $reservation )
                 <tr>
-                  <td class="px-4 py-3">Start</td>
-                  <td class="px-4 py-3">5 Mb/s</td>
-                  <td class="px-4 py-3">15 GB</td>
-                  <td class="px-4 py-3 text-lg text-gray-900">Free</td>
-                  <td class="w-10 text-center">
-                    <input name="plan" type="radio">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="border-t-2 border-gray-200 px-4 py-3">Pro</td>
-                  <td class="border-t-2 border-gray-200 px-4 py-3">25 Mb/s</td>
-                  <td class="border-t-2 border-gray-200 px-4 py-3">25 GB</td>
-                  <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">$24</td>
-
+                  <td class="border-t-2 border-gray-200 px-4 py-3">{{$reservation->event->title}}</td>
+                  <td class="border-t-2 border-gray-200 px-4 py-3">{{$reservation->event->date}}</td>
+                  <td class="border-t-2 border-gray-200 px-4 py-3">{{$reservation->created_at}}</td>
+                  @switch($reservation->status)
+                  @case(1)
+                  <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-indigo-500">{{$reservation->getStatus()}}</td>
+                  @break
+                  @case(2)
+                  <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-green-500">{{$reservation->getStatus()}}</td>
+                  @break
+                  @endswitch
+                    @if($reservation->status == 2)
                   <td class="border-t-2 border-gray-200 w-10 text-center">
-                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                    <a href="{{route('ticketDownload',['reservation'=>$reservation->id])}}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
                         <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
                         <span>Download</span>
-                      </button>
+                      </a>
                   </td>
+                  @endif
                 </tr>
-                <tr>
-                  <td class="border-t-2 border-gray-200 px-4 py-3">Business</td>
-                  <td class="border-t-2 border-gray-200 px-4 py-3">36 Mb/s</td>
-                  <td class="border-t-2 border-gray-200 px-4 py-3">40 GB</td>
-                  <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">$50</td>
-                  <td class="border-t-2 border-gray-200 w-10 text-center">
-                    <input name="plan" type="radio">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">Exclusive</td>
-                  <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">48 Mb/s</td>
-                  <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">120 GB</td>
-                  <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3 text-lg text-gray-900">$72</td>
-                  <td class="border-t-2 border-b-2 border-gray-200 w-10 text-center">
-                    <input name="plan" type="radio">
-                  </td>
-                </tr>
+                @endforeach
+
               </tbody>
             </table>
           </div>
           <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
-            <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+            <a href="{{route('welcome')}}" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
+                <path d="M5 12l14 0 M5 12l6 6 M5 12l6 -6"></path>
+              </svg>back
             </a>
-            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+            {{-- <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Button</button> --}}
           </div>
         </div>
       </section>

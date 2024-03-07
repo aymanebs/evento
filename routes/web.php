@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Organiser\EventController as OrganiserEventController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Event;
 use Illuminate\Support\Facades\Route;
@@ -70,5 +71,6 @@ Route::post('/events/store',[OrganiserEventController::class,'store'])->name('or
 Route::get('/',[HomeController::class,'index'])->name('welcome');
 Route::get('/details/{id}',[HomeController::class,'show'])->name('events.details');
 Route::get('/reservation/{eventId}',[HomeController::class,'reservation'])->name('events.reservation');
+// Route::get('/generate-pdf', [PDFController::class, 'generatePDF']);
 
 require __DIR__.'/auth.php';

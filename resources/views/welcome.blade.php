@@ -178,9 +178,9 @@
 
             @foreach( $events as $event)
             <div class="rounded overflow-hidden shadow-lg">
-                <a href="#"></a>
+                <a href="{{route('events.details',$event->id) }}"></a>
                 <div class="relative">
-                    <a href="#">
+                    <a href="{{route('events.details',$event->id) }}">
                         <img class="w-full"
                             src="{{$event->getFirstMediaUrl('images')}}"
                             >
@@ -188,7 +188,7 @@
                             class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
                         </div>
                     </a>
-                    <a href="#!">
+                    <a href="#">
                         <div
                             class="absolute bottom-0 left-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
                           {{$event->category->name}}
@@ -196,12 +196,22 @@
                         </div>
                     </a>
     
-                    <a href="!#">
+                    <a href="{{route('events.details',$event->id) }}">
+
+
                         <div
                             class="text-sm absolute top-0 right-0 bg-indigo-600 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                            <span class="font-bold">27</span>
-                            <small>March</small>
+                            <span class="">{{$event->getStatus()}}</span>
+                            {{-- <small>March</small> --}}
                         </div>
+
+                        @if($event->status==3 || $event->status==3  )
+                        <div
+                        class="text-sm absolute top-0 right-0 bg-red-600 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-red-600 transition duration-500 ease-in-out">
+                        <span class="">{{$event->getStatus()}}</span>
+                        </div>
+                        @endif
+
                     </a>
                 </div>
                 {{--title --}}

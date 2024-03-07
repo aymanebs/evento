@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Organiser\EventController as OrganiserEventController;
+use App\Http\Controllers\Organiser\ReservationController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Event;
@@ -59,10 +60,13 @@ Route::post('/events/accept/{event}',[AdminEventController::class,'accept'])->na
 // Organiser routes ////////////////////
 
 Route::prefix('organiser')->group(function(){
-
+    // event
+Route::get('/dashboard/events',[OrganiserEventController::class,'index'])->name('organiser.events');
 Route::get('/events/create',[OrganiserEventController::class,'create'])->name('organiser.events.create');
 Route::post('/events/store',[OrganiserEventController::class,'store'])->name('organiser.events.store');
-
+    //reservations
+Route::get('/dashboard/reservations',[ReservationController::class,'index'])->name('organiser.reservations');   
+Route::post('/dashboard/reservations/accept/{reservation}',[ReservationController::class,'accept'])->name('organiser.reservations.accept');
 });
 
 
@@ -71,6 +75,7 @@ Route::post('/events/store',[OrganiserEventController::class,'store'])->name('or
 Route::get('/',[HomeController::class,'index'])->name('welcome');
 Route::get('/details/{id}',[HomeController::class,'show'])->name('events.details');
 Route::get('/reservation/{eventId}',[HomeController::class,'reservation'])->name('events.reservation');
+Route::get('/requests',[HomeController::class,'requests'])->name('requests');
 // Route::get('/generate-pdf', [PDFController::class, 'generatePDF']);
 
 require __DIR__.'/auth.php';

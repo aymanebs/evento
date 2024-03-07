@@ -128,7 +128,7 @@
 
                                 {{-- hidden input --}}
 
-                                <input type="hidden" name="user_id" value="{{auth()->id()}}">
+                                <input type="hidden" name="organiser_id" value="{{ auth()->user()->organiser->id }}">
 
 
 								<p class="text-xs text-red-500 text-right my-3">Required fields are marked with an

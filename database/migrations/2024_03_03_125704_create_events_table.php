@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('status')->default(1);
             $table->integer('reservation_method')->default(1);
             $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('organiser_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

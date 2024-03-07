@@ -29,13 +29,13 @@ table {
     width: 100%;
     border-spacing: 0;
 }
-table.products {
+table.events {
     font-size: 0.875rem;
 }
-table.products tr {
+table.events tr {
     background-color: rgb(96 165 250);
 }
-table.products th {
+table.events th {
     color: #ffffff;
     padding: 0.5rem;
 }
@@ -85,7 +85,7 @@ table tr.items td {
     </div>
  
     <div class="margin-top">
-        <table class="products">
+        <table class="events">
             <tr>
                 <th>id</th>
                 <th>Description</th>

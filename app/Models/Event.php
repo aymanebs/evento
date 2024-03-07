@@ -22,7 +22,7 @@ class Event extends Model implements HasMedia
         'available_places',
         'status',
         'category_id',
-        'user_id',
+        'organiser_id',
         'reservation_method'
     ];
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Organiser;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -49,7 +50,11 @@ class RegisteredUserController extends Controller
 
         }
         if ($request->role == 3){
-            $user->roles()->attach(3); 
+            $user->roles()->attach(3);
+            Organiser::create([
+                'user_id' => $user->id,
+            ]); 
+
         }
         event(new Registered($user));
         Auth::login($user);

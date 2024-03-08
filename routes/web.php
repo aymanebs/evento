@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 
 // Admin routes ////////////////////
 
-Route::middleware('admin')->prefix('admin')->name('admin.')->group(function(){
+Route::middleware('admin')->middleware('auth')->prefix('admin')->name('admin.')->group(function(){
 
 Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
     // User
@@ -59,11 +59,14 @@ Route::post('/events/accept/{event}',[AdminEventController::class,'accept'])->na
 
 // Organiser routes ////////////////////
 
-Route::prefix('organiser')->group(function(){
+Route::middleware('organiser')->prefix('organiser')->middleware('auth')->group(function(){
     // event
 Route::get('/dashboard/events',[OrganiserEventController::class,'index'])->name('organiser.events');
 Route::get('/events/create',[OrganiserEventController::class,'create'])->name('organiser.events.create');
 Route::post('/events/store',[OrganiserEventController::class,'store'])->name('organiser.events.store');
+Route::get('/categories/delete/{event}',[OrganiserEventController::class,'edit'])->name('organiser.events.edit');
+Route::put('/categories/update/{event}',[OrganiserEventController::class,'update'])->name('organiser.events.update');
+Route::delete('/categories/delete/{event}',[OrganiserEventController::class,'destroy'])->name('organiser.events.delete');
     //reservations
 Route::get('/dashboard/reservations',[ReservationController::class,'index'])->name('organiser.reservations');   
 Route::post('/dashboard/reservations/accept/{reservation}',[ReservationController::class,'accept'])->name('organiser.reservations.accept');
@@ -74,9 +77,9 @@ Route::post('/dashboard/reservations/accept/{reservation}',[ReservationControlle
 
 Route::get('/',[HomeController::class,'index'])->name('welcome');
 Route::get('/details/{event}',[HomeController::class,'show'])->name('events.details');
-Route::post('/reservation/{event}',[HomeController::class,'reservation'])->name('events.reservation');
-Route::get('/requests',[HomeController::class,'requests'])->name('requests');
-Route::get('/requests/download/{reservation}',[HomeController::class,'ticketDownload'])->name('ticketDownload');
+Route::post('/reservation/{event}',[HomeController::class,'reservation'])->name('events.reservation')->middleware('auth');
+Route::get('/requests',[HomeController::class,'requests'])->name('requests')->middleware('auth');
+Route::get('/requests/download/{reservation}',[HomeController::class,'ticketDownload'])->name('ticketDownload')->middleware('auth');
 Route::get('/search',[HomeController::class,'search'])->name('search');
 
 

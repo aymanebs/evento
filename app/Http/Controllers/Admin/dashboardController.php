@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class dashboardController extends Controller
 {
     public function index(){
-        $this->authorize('access-organiser-dashboard');
+        $this->authorize('access-admin-dashboard');
         $users=User::all();
         return view('admin.dashboard',compact('users'));
     }

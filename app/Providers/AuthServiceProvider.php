@@ -3,7 +3,11 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Models\Permission;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate as FacadesGate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +25,18 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+    
+    $this->registerPolicies();
+
+   
+    $permissions = Permission::all();
+
+    foreach ($permissions as $permission) {
+        FacadesGate::define($permission->name, function ($user) use ($permission) {
+            return $user->hasPermission($permission->name);
+        });
     }
-}
+    }
+
+    }
+

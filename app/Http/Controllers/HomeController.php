@@ -14,28 +14,28 @@ class HomeController extends Controller
     public function index(){
 
         $categories=Category::all();
-        $events=Event::whereNotIn('status',[1])->paginate(3);
+        $events=Event::whereNotIn('status',[1])->paginate(8);
         return view('welcome',compact('events','categories'));
     }
 
-    public function show(int $id){
-        $event = Event::findOrFail($id);
+    public function show(Event $event){
+        // $event = Event::findOrFail($id);
         return view('details', compact('event'));
     }
 
 
     // ticket reservation method
 
-    public function reservation($eventId){
+    public function reservation(Event $event){
 
-        $event=Event::findOrFail($eventId);
+        // $event=Event::findOrFail($eventId);
 
         if($event->status==2){
 
             if($event->reservation_method == 1){
 
                 $user=Auth::user();
-                $user->events()->attach($eventId,['status'=> 2]);
+                $user->events()->attach($event->id,['status'=> 2]);
                 $event->decrement('available_places');
                 if($event->available_places == 0){
                     $event->update(['status'=> 3]);
@@ -62,7 +62,7 @@ class HomeController extends Controller
                 if($event->reservation_method == 2){
         
                     $user=Auth::user();
-                    $user->events()->attach($eventId);
+                    $user->events()->attach($event->id);
                 }
                 
         }
@@ -116,7 +116,7 @@ class HomeController extends Controller
            $eventsQuery->where('category_id',$categoryId);
           
         }
-        $events=$eventsQuery->paginate(3);
+        $events=$eventsQuery->paginate(8);
       
         return view('welcome', compact('events','categories'));
     }

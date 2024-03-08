@@ -12,8 +12,7 @@
     <!-- component -->
 
 
-    <div class="relative min-h-screen flex items-center justify-center bg-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
-    style="background-image: url('{{asset('imgs/add_event_background.jpg')}}');">
+    <div class="relative min-h-screen flex items-center justify-center bg-center bg-gray-100    py-12 px-4 sm:px-6 lg:px-8    relative items-center">
 	<div class="absolute bg-black opacity-60 inset-0 z-0"></div>
 	<div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
         
@@ -134,7 +133,7 @@
 								<p class="text-xs text-red-500 text-right my-3">Required fields are marked with an
 									asterisk <abbr title="Required field">*</abbr></p>
 								<div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-									<a href="{{route('welcome')}}" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </a>
+									<a href="{{route('organiser.events')}}" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </a>
 									<button class="mb-2 md:mb-0 bg-sky-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-sky-500" type="submit">Save</button>
 								</div>
 							</div>
@@ -145,6 +144,7 @@
             {{-- form end --}}
 
 			</div>
+        
     
 </body>
 </html>

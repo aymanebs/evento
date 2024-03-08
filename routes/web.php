@@ -73,11 +73,11 @@ Route::post('/dashboard/reservations/accept/{reservation}',[ReservationControlle
 // Homepage routes /////////////////////
 
 Route::get('/',[HomeController::class,'index'])->name('welcome');
-Route::get('/details/{id}',[HomeController::class,'show'])->name('events.details');
-Route::get('/reservation/{eventId}',[HomeController::class,'reservation'])->name('events.reservation');
+Route::get('/details/{event}',[HomeController::class,'show'])->name('events.details');
+Route::post('/reservation/{event}',[HomeController::class,'reservation'])->name('events.reservation');
 Route::get('/requests',[HomeController::class,'requests'])->name('requests');
 Route::get('/requests/download/{reservation}',[HomeController::class,'ticketDownload'])->name('ticketDownload');
 Route::get('/search',[HomeController::class,'search'])->name('search');
-// Route::get('/generate-pdf', [PDFController::class, 'generatePDF']);
+
 
 require __DIR__.'/auth.php';

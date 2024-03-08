@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\DB;
 class ReservationController extends Controller
 {
     public function index(){
+        $this->authorize('access-organiser-dashboard');
         $organiser = auth()->user()->organiser;
-         $events = $organiser->events()->pluck('id') ;
+        $events = $organiser->events()->pluck('id') ;
         $reservations = EventUser::whereIn('event_id',$events )->get();
         return view('organiser.reservations',compact('reservations'));
     }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckAdmin
+class CheckOrganiser
 {
     /**
      * Handle an incoming request.
@@ -16,16 +16,17 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check()){
+
+        if(auth()->check()){
 
             if(Auth::user()->roles->isNotEmpty()){
-
-                if(Auth::user()->roles->contains('id',1)){
+                if(Auth::user()->roles->contains('id',3)){
                     return $next($request);
                 }
             }
-         
         }
-             abort(403,'You are not authorized to access this route');   
+
+        abort(403,'You are not authorized to access this route');   
+       
     }
 }

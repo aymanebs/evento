@@ -70,4 +70,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function hasPermission($permissionName)
+    {
+    
+        foreach ($this->roles as $role) {
+            foreach ($role->permissions as $permission) {
+                if ($permission->name === $permissionName) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }

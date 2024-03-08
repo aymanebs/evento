@@ -56,17 +56,11 @@
                                             <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>    
                                         </div>
                                         <div x-show="open" class="text-sm border-l-2 border-gray-800 mx-6 my-2.5 px-2.5 flex flex-col gap-y-1">
-                                            <a href="{{route('admin.users')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
-                                                Users
-                                            </a>
-                                            <a href="{{route('admin.events')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                            <a href="{{route('organiser.events')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                                 Events
                                             </a>
-                                            <a href="route('')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
-                                                Organisers
-                                            </a>
-                                            <a href="{{route('admin.categories')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
-                                                Categories
+                                            <a href="{{route('organiser.reservations')}}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                               Reservations
                                             </a>
                                         </div>
                                     </div>
@@ -101,7 +95,6 @@
              <script src="{{asset('js/alpine.js')}}" defer></script>
                 <!-- Flowbite JS -->
              <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-             
             </body>
         </html>
 

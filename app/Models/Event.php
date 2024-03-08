@@ -62,4 +62,9 @@ class Event extends Model implements HasMedia
     public function organiser(){
         return $this->belongsTo(Organiser::class);
     }
+
+    public function reservations()
+    {
+        return $this->hasMany(EventUser::class);
+    }
 }

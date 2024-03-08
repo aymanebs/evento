@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
-use App\Http\Controllers\Admin\dashboardController as dashboardController;
+use App\Http\Controllers\Admin\dashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Organiser\dashboardController as OrganiserDashboardController;
 use App\Http\Controllers\Organiser\EventController as OrganiserEventController;
 use App\Http\Controllers\Organiser\ReservationController;
 use App\Http\Controllers\PDFController;
@@ -39,7 +40,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('admin')->middleware('auth')->prefix('admin')->name('admin.')->group(function(){
 
-Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
+Route::get('/dashboard',[AdminDashboardController::class,'index'])->name('dashboard');
     // User
 Route::get('/users',[AdminUserController::class,'index'])->name('users');
 Route::post('/users/ban/{user}',[AdminUserController::class,'ban'])->name('users.ban');
@@ -60,7 +61,8 @@ Route::post('/events/accept/{event}',[AdminEventController::class,'accept'])->na
 // Organiser routes ////////////////////
 
 Route::middleware('organiser')->prefix('organiser')->middleware('auth')->group(function(){
-    // event
+Route::get('/dashboard',[OrganiserDashboardController::class,'index'])->name('dashboard');
+    // event  
 Route::get('/dashboard/events',[OrganiserEventController::class,'index'])->name('organiser.events');
 Route::get('/events/create',[OrganiserEventController::class,'create'])->name('organiser.events.create');
 Route::post('/events/store',[OrganiserEventController::class,'store'])->name('organiser.events.store');

@@ -1,5 +1,5 @@
-@extends('layouts.dashboard')
-@section('title')
+@extends('layouts.organiser-dashboard')
+@section('title','dashboard')
 @section('content')
  <!-- PAGE CONTENT -->
  <main class="flex-1 h-screen overflow-y-scroll overflow-x-hidden">

@@ -20,7 +20,7 @@
                         <div class="flex flex-col justify-between h-full">
                             <div class="p-4">
                                 <!-- LOGO -->
-                                <a class="flex items-center text-white space-x-4" href="">
+                                <a class="flex items-center text-white space-x-4" href="{{route('welcome')}}">
                                     <img src="{{ asset('imgs/evento_logo.svg') }}" class="w-9 h-9 bg-white rounded-lg p-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"></img>
                                     <span class="text-2xl font-bold">Evento</span>
                                 </a>

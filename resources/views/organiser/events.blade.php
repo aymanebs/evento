@@ -3,6 +3,32 @@
 @section('content')
  <!-- PAGE CONTENT -->
  <main class="flex-1 h-screen overflow-y-scroll overflow-x-hidden">
+
+    @if(session('success'))
+    <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium">{{ session('success') }}</span>
+        </div>
+      </div>
+    @endif
+
+    @if(session('deleted'))
+    <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium">{{ session('deleted') }}
+        </div>
+      </div>
+    @endif
+
+
     <div class="md:hidden justify-between items-center bg-black text-white flex">
         <h1 class="text-2xl font-bold px-4">Evento</h1>
         <button @click="navOpen = !navOpen" class="btn p-4 focus:outline-none hover:bg-gray-800">
@@ -20,8 +46,8 @@
                 <div class="space-y-2">
                     <p class="text-xs text-gray-400 uppercase">Events</p>
                     <div class="flex items-center space-x-2">
-                        <h1 class="text-xl font-semibold">#</h1>
-                        <p class="text-xs bg-green-50 text-green-500 px-1 rounded">+4.5</p>
+                        <h1 class="text-xl font-semibold">{{$totalEvents}}</h1>
+                     
                     </div>
                 </div>
                 <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5l0 2 M15 5l0 2 M15 11l0 2 M15 17l0 2 M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2"></path></svg>
@@ -29,10 +55,10 @@
 
             <div class="bg-white shadow rounded-sm flex justify-between items-center py-3.5 px-3.5">
                 <div class="space-y-2">
-                    <p class="text-xs text-gray-400 uppercase">Users</p>
+                    <p class="text-xs text-gray-400 uppercase">Reservations</p>
                     <div class="flex items-center space-x-2">
-                        <h1 class="text-xl font-semibold">#</h1>
-                        <p class="text-xs bg-green-50 text-green-500 px-1 rounded">+7.4</p>
+                        <h1 class="text-xl font-semibold">{{$totalReservations}}</h1>
+                        
                     </div>
                 </div>
                 <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>                    
@@ -40,25 +66,29 @@
 
             <div class="bg-white shadow rounded-sm flex justify-between items-center py-3.5 px-3.5">
                 <div class="space-y-2">
-                    <p class="text-xs text-gray-400 uppercase">Organisers</p>
+                    <p class="text-xs text-gray-400 uppercase">Most reserved event</p>
                     <div class="flex items-center space-x-2">
-                        <h1 class="text-xl font-semibold">#</h1>
-                        <p class="text-xs bg-red-50 text-red-500 px-1 rounded">-2.9</p>
+                        <h1 class="text-xl font-semibold">{{$mostReservedEvent->title}}</h1>
+                   
                     </div>
                 </div>
                 <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0 M6 21v-2a4 4 0 0 1 4 -4h3.5 M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"></path></svg>
             </div>
 
-            <div class="bg-white shadow rounded-sm flex justify-between items-center py-3.5 px-3.5">
-                <div class="space-y-2">
-                    <p class="text-xs text-gray-400 uppercase">Categories</p>
-                    <div class="flex items-center space-x-2">
-                        <h1 class="text-xl font-semibold">#</h1>
-                        <p class="text-xs bg-green-50 text-green-500 px-1 rounded">+3.1</p>
+
+           
+                <div class="bg-white shadow rounded-sm flex justify-between items-center py-3.5 px-3.5">
+                    <div class="space-y-2">
+                        <p class="text-xs text-gray-400 uppercase">Pending events</p>
+                        <div class="flex items-center space-x-2">
+                            <h1 class="text-xl font-semibold">{{$pendingEvents}}</h1>
+                         
+                        </div>
                     </div>
+                    <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5l0 2 M15 5l0 2 M15 11l0 2 M15 17l0 2 M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2"></path></svg>
                 </div>
-                <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6h-6z M14 4h6v6h-6z M4 14h6v6h-6z M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 00"></path></svg>
-            </div>
+
+       
         </div>
         <!-- END OF STATISTICS -->
 

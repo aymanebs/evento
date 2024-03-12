@@ -63,17 +63,6 @@
                 <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6h-6z M14 4h6v6h-6z M4 14h6v6h-6z M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 00"></path></svg>
             </div>
         
-         
-            <div class="bg-pink-500 text-white shadow-lg rounded-xl flex justify-between items-center py-6 px-6">
-                <div class="space-y-2">
-                    <p class="text-xs uppercase">Revenue</p>
-                    <div class="flex items-center space-x-2">
-                        <h1 class="text-3xl font-semibold">{{$revenue}}</h1>
-                        <p class="text-xs bg-pink-50 text-pink-500 px-2 rounded">+12,345</p>
-                    </div>
-                </div>
-                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6h-6z M14 4h6v6h-6z M4 14h6v6h-6z M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 00"></path></svg>
-            </div>
         
        
             <div class="bg-indigo-500 text-white shadow-lg rounded-xl flex justify-between items-center py-6 px-6">
@@ -110,18 +99,7 @@
                 </div>
                 <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6h-6z M14 4h6v6h-6z M4 14h6v6h-6z M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 00"></path></svg>
             </div>
-        
-        
-            <div class="bg-orange-500 text-white shadow-lg rounded-xl flex justify-between items-center py-6 px-6">
-                <div class="space-y-2">
-                    <p class="text-xs uppercase">Most sold event</p>
-                    <div class="flex items-center space-x-2">
-                        <h1 class="text-3xl font-semibold">{{$mostSoldEvent->title}}</h1>
-                        <p class="text-xs bg-orange-50 text-orange-500 px-2 rounded"></p>
-                    </div>
-                </div>
-                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6h-6z M14 4h6v6h-6z M4 14h6v6h-6z M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 00"></path></svg>
-            </div>
+    
     
         
       

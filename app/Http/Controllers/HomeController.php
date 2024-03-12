@@ -28,7 +28,7 @@ class HomeController extends Controller
 
     public function reservation(Event $event){
 
-        // $event=Event::findOrFail($eventId);
+        
 
         if($event->status==2){
 
@@ -68,7 +68,7 @@ class HomeController extends Controller
         }
       
         
-        return redirect()->back();
+        return redirect()->back()->with('reservation', "Your request was submitted");
 
     }
 

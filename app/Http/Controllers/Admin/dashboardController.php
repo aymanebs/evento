@@ -21,12 +21,12 @@ class dashboardController extends Controller
         $activeOrganiser=Organiser::with('user')->withCount('events')->latest('events_count')->first();
         $pendingEvents=Event::Where('status','1')->count();
         $soldTickets=EventUser::Where('status','2')->count();
-        $revenue=EventUser::Where('status','2')->with('event')->get()->sum('event.price');
-        $mostSoldEvent=Event::withCount(['reservations' => function ($query) { $query->where('status', 2);}])->orderByDesc('reservations_count')->first();
+        
+        
       
 
 
         $users=User::all();
-        return view('admin.dashboard',compact('users','totalUsers','totalEvents','totalOrganisers','totalCategories','activeOrganiser','pendingEvents','soldTickets','revenue','mostSoldEvent'));
+        return view('admin.dashboard',compact('users','totalUsers','totalEvents','totalOrganisers','totalCategories','activeOrganiser','pendingEvents','soldTickets'));
     }
 }
